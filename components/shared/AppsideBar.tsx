@@ -23,10 +23,14 @@ import {
   Home,
   Inbox,
   Plus,
+  User,
+  DollarSignIcon,
   Projector,
   Search,
   Settings,
   User2,
+  LucideProjector,
+  PodcastIcon,
 } from 'lucide-react'
 import {
   Collapsible,
@@ -43,6 +47,18 @@ import {
 } from '../ui/dropdown-menu'
 
 const AppsideBar = () => {
+  const Lists = [
+    {
+      title: 'See All Users',
+      url: '#',
+      icon: User,
+    },
+    {
+      title: 'See All Payments',
+      url: '/payments',
+      icon: DollarSignIcon,
+    },
+  ]
   const items = [
     {
       title: 'Home',
@@ -87,11 +103,30 @@ const AppsideBar = () => {
       <SidebarSeparator className='-m-0.5' />
 
       <SidebarContent>
+        `{' '}
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        {/* {......} */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Lists</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {Lists.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link href={item.url}>
@@ -116,7 +151,15 @@ const AppsideBar = () => {
                 <SidebarMenuButton asChild>
                   <Link href='/#'>
                     <Projector />
-                    See all projects
+                    See all Posts
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href='/#'>
+                    <Plus />
+                    Add New Post
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -133,15 +176,29 @@ const AppsideBar = () => {
                 <SidebarMenuButton asChild>
                   <Link href='/#'>
                     <Projector />
-                    See all projects
+                    See All Projects
                   </Link>
                 </SidebarMenuButton>
                 <SidebarMenuSub>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton>project 1</SidebarMenuSubButton>
+                    <SidebarMenuSubButton>
+                      <Plus />
+                      Add Project
+                    </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton>project 2</SidebarMenuSubButton>
+                    <SidebarMenuSubButton>
+                      <LucideProjector />
+                      Review Project
+                    </SidebarMenuSubButton>
+                    <SidebarMenuSub>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton>
+                          <Plus />
+                          Add Review
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                    </SidebarMenuSub>
                   </SidebarMenuSubItem>
                 </SidebarMenuSub>
               </SidebarMenuItem>
@@ -153,7 +210,7 @@ const AppsideBar = () => {
           <SidebarGroup>
             <SidebarGroupLabel asChild>
               <CollapsibleTrigger>
-                collapsible
+                Notification
                 <ChevronsUpDown />
                 <span className='sr-only'>Toggle</span>
               </CollapsibleTrigger>
@@ -166,8 +223,8 @@ const AppsideBar = () => {
                       <SidebarMenuItem>
                         <SidebarMenuButton asChild>
                           <Link href='/#'>
-                            <Projector />
-                            See all projects
+                            <PodcastIcon />
+                            posts
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -176,8 +233,8 @@ const AppsideBar = () => {
                       <SidebarMenuItem>
                         <SidebarMenuButton asChild>
                           <Link href='/#'>
-                            <Projector />
-                            See all projects
+                            <PodcastIcon />
+                            projects
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>

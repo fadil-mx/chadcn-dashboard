@@ -1,7 +1,6 @@
 'use client'
 
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   ChartConfig,
@@ -12,24 +11,66 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-export const description = 'A multiple bar chart'
-
 const chartData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 },
+  {
+    month: 'January',
+    subscriptions: 8700,
+    ads: 3200,
+    sponsorships: 1100,
+    donations: 500,
+  },
+  {
+    month: 'February',
+    subscriptions: 9100,
+    ads: 3400,
+    sponsorships: 900,
+    donations: 400,
+  },
+  {
+    month: 'March',
+    subscriptions: 9400,
+    ads: 3000,
+    sponsorships: 1500,
+    donations: 600,
+  },
+  {
+    month: 'April',
+    subscriptions: 10200,
+    ads: 3600,
+    sponsorships: 1200,
+    donations: 700,
+  },
+  {
+    month: 'May',
+    subscriptions: 9900,
+    ads: 4100,
+    sponsorships: 1000,
+    donations: 800,
+  },
+  {
+    month: 'June',
+    subscriptions: 11000,
+    ads: 3900,
+    sponsorships: 1300,
+    donations: 650,
+  },
 ]
 
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
+  subscriptions: {
+    label: 'Subscriptions',
     color: 'var(--chart-1)',
   },
-  mobile: {
-    label: 'Mobile',
+  ads: {
+    label: 'Ads',
+    color: 'var(--chart-2)',
+  },
+  sponsorships: {
+    label: 'Sponsorships',
+    color: 'var(--chart-3)',
+  },
+  donations: {
+    label: 'Donations',
     color: 'var(--chart-4)',
   },
 } satisfies ChartConfig
@@ -38,12 +79,11 @@ export function ChartBarMultiple() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Total Revenue</CardTitle>
-        {/* <CardDescription>January - June 2024</CardDescription> */}
+        <CardTitle>Total Revenue by Source</CardTitle>
       </CardHeader>
       <CardContent className='pl-0'>
         <ChartContainer config={chartConfig}>
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart data={chartData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey='month'
@@ -58,19 +98,13 @@ export function ChartBarMultiple() {
               content={<ChartTooltipContent indicator='dashed' />}
             />
             <ChartLegend content={<ChartLegendContent />} />
-            <Bar dataKey='desktop' fill='var(--color-desktop)' radius={4} />
-            <Bar dataKey='mobile' fill='var(--color-mobile)' radius={4} />
+            <Bar dataKey='subscriptions' fill='var(--chart-1)' radius={4} />
+            <Bar dataKey='ads' fill='var(--chart-2)' radius={4} />
+            <Bar dataKey='sponsorships' fill='var(--chart-3)' radius={4} />
+            <Bar dataKey='donations' fill='var(--chart-4)' radius={4} />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      {/* <CardFooter className='flex-col items-start gap-2 text-sm'>
-        <div className='flex gap-2 leading-none font-medium'>
-          Trending up by 5.2% this month <TrendingUp className='h-4 w-4' />
-        </div>
-        <div className='text-muted-foreground leading-none'>
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter> */}
     </Card>
   )
 }

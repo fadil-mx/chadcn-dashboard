@@ -19,14 +19,14 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 
-export const description = 'A donut chart with text'
+export const description = 'Visitor distribution by browser'
 
 const chartData = [
-  { browser: 'chrome', visitors: 275, fill: 'var(--color-chrome)' },
-  { browser: 'safari', visitors: 200, fill: 'var(--color-safari)' },
-  { browser: 'firefox', visitors: 287, fill: 'var(--color-firefox)' },
-  { browser: 'edge', visitors: 173, fill: 'var(--color-edge)' },
-  { browser: 'other', visitors: 190, fill: 'var(--color-other)' },
+  { browser: 'chrome', visitors: 8200, fill: 'var(--color-chrome)' },
+  { browser: 'safari', visitors: 5400, fill: 'var(--color-safari)' },
+  { browser: 'firefox', visitors: 3100, fill: 'var(--color-firefox)' },
+  { browser: 'edge', visitors: 1700, fill: 'var(--color-edge)' },
+  { browser: 'other', visitors: 1300, fill: 'var(--color-other)' },
 ]
 
 const chartConfig = {
@@ -63,8 +63,8 @@ export function ChartPieDonutText() {
   return (
     <Card className='flex flex-col'>
       <CardHeader className='items-center pb-0'>
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Visitor Analytics by Browser</CardTitle>
+        <CardDescription>Last 6 months</CardDescription>
       </CardHeader>
       <CardContent className='flex-1 pb-0'>
         <ChartContainer

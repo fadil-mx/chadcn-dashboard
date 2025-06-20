@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardContent, CardFooter, CardTitle } from '../ui/card'
 import Image from 'next/image'
 import { Badge } from '../ui/badge'
+import Link from 'next/link'
 
 type Props = { title: string }
 
@@ -13,6 +14,7 @@ const popularContent = [
     image:
       'https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 4300,
+    href: '/',
   },
   {
     id: 2,
@@ -21,6 +23,7 @@ const popularContent = [
     image:
       'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 3200,
+    href: '/',
   },
   {
     id: 3,
@@ -29,6 +32,7 @@ const popularContent = [
     image:
       'https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 2400,
+    href: '/',
   },
   {
     id: 4,
@@ -37,6 +41,7 @@ const popularContent = [
     image:
       'https://images.pexels.com/photos/943096/pexels-photo-943096.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 1500,
+    href: '/',
   },
   {
     id: 5,
@@ -45,6 +50,7 @@ const popularContent = [
     image:
       'https://images.pexels.com/photos/3094799/pexels-photo-3094799.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 1200,
+    href: '/',
   },
 ]
 
@@ -56,6 +62,7 @@ const latestTransactions = [
     image:
       'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 1400,
+    href: '/users/johndoe',
   },
   {
     id: 2,
@@ -64,6 +71,7 @@ const latestTransactions = [
     image:
       'https://images.pexels.com/photos/4969918/pexels-photo-4969918.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 2100,
+    href: '/',
   },
   {
     id: 3,
@@ -72,6 +80,7 @@ const latestTransactions = [
     image:
       'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 1300,
+    href: '/',
   },
   {
     id: 4,
@@ -80,6 +89,7 @@ const latestTransactions = [
     image:
       'https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 2500,
+    href: '/',
   },
   {
     id: 5,
@@ -88,6 +98,7 @@ const latestTransactions = [
     image:
       'https://images.pexels.com/photos/1680175/pexels-photo-1680175.jpeg?auto=compress&cs=tinysrgb&w=800',
     count: 1400,
+    href: '/',
   },
 ]
 
@@ -114,7 +125,9 @@ const CardList = ({ title }: Props) => {
               <CardTitle className='text-sm font-medium'>
                 {item.title}
               </CardTitle>
-              <Badge variant='secondary'>{item.badge}</Badge>
+              <Link href={item.href || '/'}>
+                <Badge variant='secondary'>{item.badge}</Badge>
+              </Link>
             </CardContent>
             <CardFooter className='p-0'>{item.count / 1000}K</CardFooter>
           </Card>
